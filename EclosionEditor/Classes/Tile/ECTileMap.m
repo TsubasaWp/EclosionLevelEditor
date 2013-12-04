@@ -33,13 +33,7 @@
 }
 
 - (void)cleanup {
-    [_hero removeFromParentAndCleanup:YES];
-    for ( CCNode * node in _itemMatrix ) {
-        [node removeFromParentAndCleanup:YES];
-    }
-    for ( CCNode * node in _myItems ) {
-        [node removeFromParentAndCleanup:YES];
-    }
+    [self removeAllChildrenWithCleanup:YES];
     [super cleanup];
 }
 
