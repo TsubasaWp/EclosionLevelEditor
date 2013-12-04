@@ -27,10 +27,12 @@
 }
 
 + (ECTileMap *)mapBuildWithFile:(NSString *)filename;
+- (void)buildMap:(NSString *)filename;
 - (void)fpsUpdate:(ccTime)interval;
 - (void)fixUpdate:(ccTime)interval;
 
 // for Editor
+- (void)destory;
 - (void)cleanAllObjects;
 - (void)saveEditedLevel;
 - (void)enterEditingMode;

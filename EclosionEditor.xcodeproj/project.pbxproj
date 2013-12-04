@@ -121,7 +121,6 @@
 		DB85CA49184B59E300AA5EE1 /* vec4.c in Sources */ = {isa = PBXBuildFile; fileRef = DB85CA48184B59E300AA5EE1 /* vec4.c */; };
 		DB85CA4E184B59E300AA5EE1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DB85CA4D184B59E300AA5EE1 /* main.m */; };
 		DB85CA51184B59E300AA5EE1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DB85CA50184B59E300AA5EE1 /* AppDelegate.m */; };
-		DB85CA54184B59E300AA5EE1 /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DB85CA53184B59E300AA5EE1 /* HelloWorldLayer.m */; };
 		DB85CBB8184B5BCD00AA5EE1 /* animation_fly_0.png in Resources */ = {isa = PBXBuildFile; fileRef = DB85CA5C184B5BCC00AA5EE1 /* animation_fly_0.png */; };
 		DB85CBBA184B5BCD00AA5EE1 /* animation_fly_1.png in Resources */ = {isa = PBXBuildFile; fileRef = DB85CA5E184B5BCC00AA5EE1 /* animation_fly_1.png */; };
 		DB85CBBC184B5BCD00AA5EE1 /* animation_fly_2.png in Resources */ = {isa = PBXBuildFile; fileRef = DB85CA60184B5BCC00AA5EE1 /* animation_fly_2.png */; };
@@ -232,20 +231,10 @@
 		DB85CD3D184B5DBB00AA5EE1 /* ECScoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DB85CD19184B5DBB00AA5EE1 /* ECScoreManager.m */; };
 		DB85CD3E184B5DBB00AA5EE1 /* ECHero.m in Sources */ = {isa = PBXBuildFile; fileRef = DB85CD1C184B5DBB00AA5EE1 /* ECHero.m */; };
 		DB85CD3F184B5DBB00AA5EE1 /* ECMacros.m in Sources */ = {isa = PBXBuildFile; fileRef = DB85CD1F184B5DBB00AA5EE1 /* ECMacros.m */; };
-		DB85CD40184B5DBB00AA5EE1 /* ECClearScene.m in Sources */ = {isa = PBXBuildFile; fileRef = DB85CD22184B5DBB00AA5EE1 /* ECClearScene.m */; };
 		DB85CD41184B5DBB00AA5EE1 /* ECGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = DB85CD24184B5DBB00AA5EE1 /* ECGameScene.m */; };
-		DB85CD42184B5DBB00AA5EE1 /* ECHelpScene.m in Sources */ = {isa = PBXBuildFile; fileRef = DB85CD26184B5DBB00AA5EE1 /* ECHelpScene.m */; };
-		DB85CD43184B5DBB00AA5EE1 /* ECInfoScene.m in Sources */ = {isa = PBXBuildFile; fileRef = DB85CD28184B5DBB00AA5EE1 /* ECInfoScene.m */; };
-		DB85CD44184B5DBB00AA5EE1 /* ECLevelScene.m in Sources */ = {isa = PBXBuildFile; fileRef = DB85CD2A184B5DBB00AA5EE1 /* ECLevelScene.m */; };
-		DB85CD45184B5DBB00AA5EE1 /* ECMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = DB85CD2C184B5DBB00AA5EE1 /* ECMenuScene.m */; };
-		DB85CD46184B5DBB00AA5EE1 /* ECPauseScene.m in Sources */ = {isa = PBXBuildFile; fileRef = DB85CD2E184B5DBB00AA5EE1 /* ECPauseScene.m */; };
-		DB85CD47184B5DBB00AA5EE1 /* ECSubLevelScene.m in Sources */ = {isa = PBXBuildFile; fileRef = DB85CD30184B5DBB00AA5EE1 /* ECSubLevelScene.m */; };
-		DB85CD48184B5DBB00AA5EE1 /* ECVolumeScene.m in Sources */ = {isa = PBXBuildFile; fileRef = DB85CD32184B5DBB00AA5EE1 /* ECVolumeScene.m */; };
 		DB85CD49184B5DBB00AA5EE1 /* BaseTile.m in Sources */ = {isa = PBXBuildFile; fileRef = DB85CD35184B5DBB00AA5EE1 /* BaseTile.m */; };
 		DB85CD4A184B5DBB00AA5EE1 /* ECTile.m in Sources */ = {isa = PBXBuildFile; fileRef = DB85CD37184B5DBB00AA5EE1 /* ECTile.m */; };
 		DB85CD4B184B5DBB00AA5EE1 /* ECTileMap.m in Sources */ = {isa = PBXBuildFile; fileRef = DB85CD39184B5DBB00AA5EE1 /* ECTileMap.m */; };
-		DB85CD4D184B836B00AA5EE1 /* Editor_button.png in Resources */ = {isa = PBXBuildFile; fileRef = DB85CD4C184B836B00AA5EE1 /* Editor_button.png */; };
-		DB85CD4F184B847000AA5EE1 /* Editor_button_click.png in Resources */ = {isa = PBXBuildFile; fileRef = DB85CD4E184B847000AA5EE1 /* Editor_button_click.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -499,8 +488,6 @@
 		DB85CA4D184B59E300AA5EE1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DB85CA4F184B59E300AA5EE1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DB85CA50184B59E300AA5EE1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		DB85CA52184B59E300AA5EE1 /* HelloWorldLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelloWorldLayer.h; sourceTree = "<group>"; };
-		DB85CA53184B59E300AA5EE1 /* HelloWorldLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
 		DB85CA5C184B5BCC00AA5EE1 /* animation_fly_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = animation_fly_0.png; sourceTree = "<group>"; };
 		DB85CA5E184B5BCC00AA5EE1 /* animation_fly_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = animation_fly_1.png; sourceTree = "<group>"; };
 		DB85CA60184B5BCC00AA5EE1 /* animation_fly_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = animation_fly_2.png; sourceTree = "<group>"; };
@@ -617,32 +604,14 @@
 		DB85CD1C184B5DBB00AA5EE1 /* ECHero.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECHero.m; sourceTree = "<group>"; };
 		DB85CD1E184B5DBB00AA5EE1 /* ECMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECMacros.h; sourceTree = "<group>"; };
 		DB85CD1F184B5DBB00AA5EE1 /* ECMacros.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECMacros.m; sourceTree = "<group>"; };
-		DB85CD21184B5DBB00AA5EE1 /* ECClearScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECClearScene.h; sourceTree = "<group>"; };
-		DB85CD22184B5DBB00AA5EE1 /* ECClearScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECClearScene.m; sourceTree = "<group>"; };
 		DB85CD23184B5DBB00AA5EE1 /* ECGameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECGameScene.h; sourceTree = "<group>"; };
 		DB85CD24184B5DBB00AA5EE1 /* ECGameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECGameScene.m; sourceTree = "<group>"; };
-		DB85CD25184B5DBB00AA5EE1 /* ECHelpScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECHelpScene.h; sourceTree = "<group>"; };
-		DB85CD26184B5DBB00AA5EE1 /* ECHelpScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECHelpScene.m; sourceTree = "<group>"; };
-		DB85CD27184B5DBB00AA5EE1 /* ECInfoScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECInfoScene.h; sourceTree = "<group>"; };
-		DB85CD28184B5DBB00AA5EE1 /* ECInfoScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECInfoScene.m; sourceTree = "<group>"; };
-		DB85CD29184B5DBB00AA5EE1 /* ECLevelScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECLevelScene.h; sourceTree = "<group>"; };
-		DB85CD2A184B5DBB00AA5EE1 /* ECLevelScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECLevelScene.m; sourceTree = "<group>"; };
-		DB85CD2B184B5DBB00AA5EE1 /* ECMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECMenuScene.h; sourceTree = "<group>"; };
-		DB85CD2C184B5DBB00AA5EE1 /* ECMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECMenuScene.m; sourceTree = "<group>"; };
-		DB85CD2D184B5DBB00AA5EE1 /* ECPauseScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECPauseScene.h; sourceTree = "<group>"; };
-		DB85CD2E184B5DBB00AA5EE1 /* ECPauseScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECPauseScene.m; sourceTree = "<group>"; };
-		DB85CD2F184B5DBB00AA5EE1 /* ECSubLevelScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECSubLevelScene.h; sourceTree = "<group>"; };
-		DB85CD30184B5DBB00AA5EE1 /* ECSubLevelScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECSubLevelScene.m; sourceTree = "<group>"; };
-		DB85CD31184B5DBB00AA5EE1 /* ECVolumeScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECVolumeScene.h; sourceTree = "<group>"; };
-		DB85CD32184B5DBB00AA5EE1 /* ECVolumeScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECVolumeScene.m; sourceTree = "<group>"; };
 		DB85CD34184B5DBB00AA5EE1 /* BaseTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTile.h; sourceTree = "<group>"; };
 		DB85CD35184B5DBB00AA5EE1 /* BaseTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTile.m; sourceTree = "<group>"; };
 		DB85CD36184B5DBB00AA5EE1 /* ECTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECTile.h; sourceTree = "<group>"; };
 		DB85CD37184B5DBB00AA5EE1 /* ECTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECTile.m; sourceTree = "<group>"; };
 		DB85CD38184B5DBB00AA5EE1 /* ECTileMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECTileMap.h; sourceTree = "<group>"; };
 		DB85CD39184B5DBB00AA5EE1 /* ECTileMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECTileMap.m; sourceTree = "<group>"; };
-		DB85CD4C184B836B00AA5EE1 /* Editor_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Editor_button.png; path = Resources/Editor_button.png; sourceTree = "<group>"; };
-		DB85CD4E184B847000AA5EE1 /* Editor_button_click.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Editor_button_click.png; path = Resources/Editor_button_click.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -698,8 +667,6 @@
 				DB85CD0F184B5DBB00AA5EE1 /* Classes */,
 				DB85CA4F184B59E300AA5EE1 /* AppDelegate.h */,
 				DB85CA50184B59E300AA5EE1 /* AppDelegate.m */,
-				DB85CA52184B59E300AA5EE1 /* HelloWorldLayer.h */,
-				DB85CA53184B59E300AA5EE1 /* HelloWorldLayer.m */,
 				DB85C8DE184B59E000AA5EE1 /* Resources */,
 				DB85C8EB184B59E000AA5EE1 /* libs */,
 				DB85CA4B184B59E300AA5EE1 /* Supporting Files */,
@@ -710,8 +677,6 @@
 		DB85C8DE184B59E000AA5EE1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				DB85CD4E184B847000AA5EE1 /* Editor_button_click.png */,
-				DB85CD4C184B836B00AA5EE1 /* Editor_button.png */,
 				DB85CA5A184B5BCC00AA5EE1 /* GameObject */,
 				DB85CA99184B5BCC00AA5EE1 /* Level */,
 				DB85CAE2184B5BCC00AA5EE1 /* UI */,
@@ -1270,24 +1235,8 @@
 		DB85CD20184B5DBB00AA5EE1 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				DB85CD21184B5DBB00AA5EE1 /* ECClearScene.h */,
-				DB85CD22184B5DBB00AA5EE1 /* ECClearScene.m */,
 				DB85CD23184B5DBB00AA5EE1 /* ECGameScene.h */,
 				DB85CD24184B5DBB00AA5EE1 /* ECGameScene.m */,
-				DB85CD25184B5DBB00AA5EE1 /* ECHelpScene.h */,
-				DB85CD26184B5DBB00AA5EE1 /* ECHelpScene.m */,
-				DB85CD27184B5DBB00AA5EE1 /* ECInfoScene.h */,
-				DB85CD28184B5DBB00AA5EE1 /* ECInfoScene.m */,
-				DB85CD29184B5DBB00AA5EE1 /* ECLevelScene.h */,
-				DB85CD2A184B5DBB00AA5EE1 /* ECLevelScene.m */,
-				DB85CD2B184B5DBB00AA5EE1 /* ECMenuScene.h */,
-				DB85CD2C184B5DBB00AA5EE1 /* ECMenuScene.m */,
-				DB85CD2D184B5DBB00AA5EE1 /* ECPauseScene.h */,
-				DB85CD2E184B5DBB00AA5EE1 /* ECPauseScene.m */,
-				DB85CD2F184B5DBB00AA5EE1 /* ECSubLevelScene.h */,
-				DB85CD30184B5DBB00AA5EE1 /* ECSubLevelScene.m */,
-				DB85CD31184B5DBB00AA5EE1 /* ECVolumeScene.h */,
-				DB85CD32184B5DBB00AA5EE1 /* ECVolumeScene.m */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -1464,8 +1413,6 @@
 				DB85CC3B184B5BCD00AA5EE1 /* level8.plist in Resources */,
 				DB85CC3C184B5BCD00AA5EE1 /* level9.plist in Resources */,
 				DB85CC50184B5BCD00AA5EE1 /* bg_game.png in Resources */,
-				DB85CD4D184B836B00AA5EE1 /* Editor_button.png in Resources */,
-				DB85CD4F184B847000AA5EE1 /* Editor_button_click.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1580,22 +1527,13 @@
 				DB85CA49184B59E300AA5EE1 /* vec4.c in Sources */,
 				DB85CA4E184B59E300AA5EE1 /* main.m in Sources */,
 				DB85CA51184B59E300AA5EE1 /* AppDelegate.m in Sources */,
-				DB85CA54184B59E300AA5EE1 /* HelloWorldLayer.m in Sources */,
 				DB85CD3A184B5DBB00AA5EE1 /* CCAnimationHelper.m in Sources */,
 				DB85CD3B184B5DBB00AA5EE1 /* ECLevel.m in Sources */,
 				DB85CD3C184B5DBB00AA5EE1 /* ECLevelManager.m in Sources */,
 				DB85CD3D184B5DBB00AA5EE1 /* ECScoreManager.m in Sources */,
 				DB85CD3E184B5DBB00AA5EE1 /* ECHero.m in Sources */,
 				DB85CD3F184B5DBB00AA5EE1 /* ECMacros.m in Sources */,
-				DB85CD40184B5DBB00AA5EE1 /* ECClearScene.m in Sources */,
 				DB85CD41184B5DBB00AA5EE1 /* ECGameScene.m in Sources */,
-				DB85CD42184B5DBB00AA5EE1 /* ECHelpScene.m in Sources */,
-				DB85CD43184B5DBB00AA5EE1 /* ECInfoScene.m in Sources */,
-				DB85CD44184B5DBB00AA5EE1 /* ECLevelScene.m in Sources */,
-				DB85CD45184B5DBB00AA5EE1 /* ECMenuScene.m in Sources */,
-				DB85CD46184B5DBB00AA5EE1 /* ECPauseScene.m in Sources */,
-				DB85CD47184B5DBB00AA5EE1 /* ECSubLevelScene.m in Sources */,
-				DB85CD48184B5DBB00AA5EE1 /* ECVolumeScene.m in Sources */,
 				DB85CD49184B5DBB00AA5EE1 /* BaseTile.m in Sources */,
 				DB85CD4A184B5DBB00AA5EE1 /* ECTile.m in Sources */,
 				DB85CD4B184B5DBB00AA5EE1 /* ECTileMap.m in Sources */,

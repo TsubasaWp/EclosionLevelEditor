@@ -7,6 +7,7 @@
 //
 
 #import "BaseTile.h"
+#import "ECLevelManager.h"
 
 #define RUN_ACTION_TAG 9
 #define ITEM_SPEED 6 // 每帧移动的距离
@@ -50,8 +51,12 @@
     [super dealloc];
 }
 
+- (void)cleanup {
+    [super cleanup];
+    [[[CCDirector sharedDirector] eventDispatcher] removeMouseDelegate:self];
+}
 - (void)fpsUpdate:(ccTime)interval {
-    
+
 }
 
 - (void)fixUpdate:(ccTime)interval {
@@ -99,9 +104,12 @@ bool CCRectContainsPoint(CGRect rect, CGPoint point) {
 
 - (BOOL)ccMouseDown:(NSEvent *)event
 {
+    if ( EDITING_LEVEL ) {
+        return NO;
+    }
+    
 	if ([self containsTouchLocation:event]) {
         _beginPoint = [(CCDirectorMac*)[CCDirector sharedDirector] convertEventToGL:event];
-        
         [self setMyTexture:_highlightTexture];
         return YES;
     }
@@ -109,6 +117,10 @@ bool CCRectContainsPoint(CGRect rect, CGPoint point) {
 }
 -(BOOL) ccMouseDragged:(NSEvent *)event
 {
+    if ( EDITING_LEVEL ) {
+        return NO;
+    }
+    
     if ([self containsTouchLocation:event]) {
         if (_forceDirection != ECDirectionNone) return YES;
         
@@ -136,6 +148,10 @@ bool CCRectContainsPoint(CGRect rect, CGPoint point) {
 
 - (BOOL)ccMouseUp:(NSEvent *)event
 {
+    if ( EDITING_LEVEL ) {
+        return NO;
+    }
+    
     [self setMyTexture:_texture];
     if ([self containsTouchLocation:event]) return YES;
     return NO;

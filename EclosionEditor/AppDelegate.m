@@ -33,7 +33,11 @@
 	// Center main window
 	[window_ center];
 	
-	[director runWithScene:[ECGameScene scene]];
+    // ECGameScene
+    gameScene_ = [[ECGameScene node] retain];
+    CCScene *scene = [CCScene node];
+	[scene addChild: gameScene_];
+	[director runWithScene:scene];
 }
 
 - (BOOL) applicationShouldTerminateAfterLastWindowClosed: (NSApplication *) theApplication
@@ -60,27 +64,28 @@
 
 }
 
-- (IBAction)deleteItem {
+- (IBAction)deleteItem:(id)sender {
 
 }
 
-- (IBAction)newFile {
+- (IBAction)newFile:(id)sender {
 
 }
 
-- (IBAction)saveFile {
+- (IBAction)saveFile:(id)sender {
 
 }
 
-- (IBAction)cleanFile {
+- (IBAction)cleanFile:(id)sender {
 
 }
 
-- (IBAction)editLevel {
+- (IBAction)editLevel:(id)sender {
+    [gameScene_ edit];
 }
 
-- (IBAction)runLevel {
-
+- (IBAction)runLevel:(id)sender {
+    [gameScene_ run];
 }
 
 @end

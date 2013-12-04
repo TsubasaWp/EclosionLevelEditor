@@ -10,7 +10,6 @@
 #import "ECLevelManager.h"
 #import "ECTile.h"
 #import "ECHero.h"
-#import "ECClearScene.h"
 #import "ECGameScene.h"
 
 @implementation ECTileMap
@@ -25,14 +24,28 @@
     if ( self = [super init ]) {
         _tileMatrix = [[NSMutableArray alloc] init];
         _myItems = [[NSMutableArray alloc] init];
+        
+        [self schedule:@selector(fpsUpdate:)];
+        [self schedule:@selector(fixUpdate:) interval:1.f/ECFixFPS];
+        
     }
     return self;
+}
+
+- (void)cleanup {
+    [_hero removeFromParentAndCleanup:YES];
+    for ( CCNode * node in _itemMatrix ) {
+        [node removeFromParentAndCleanup:YES];
+    }
+    for ( CCNode * node in _myItems ) {
+        [node removeFromParentAndCleanup:YES];
+    }
+    [super cleanup];
 }
 
 - (void)dealloc {
     [_tileMatrix release];
     [_myItems release];
-    //[_hero removeFromParentAndCleanup:YES];
     [_hero release];
     [super dealloc];
 }
@@ -87,11 +100,14 @@
 }
 
 - (void)runGame {
-
 }
 
 #pragma mark - Game
 - (void)fixUpdate:(ccTime)interval {
+    
+    if ( EDITING_LEVEL ) {
+        return;
+    }
     // 刷新Item
     for ( BaseTile* item in _myItems ) {
         if ( item.forceDirection != ECDirectionNone ) {
@@ -152,9 +168,10 @@
     }
 }
 
-
 - (void)fpsUpdate:(ccTime)interval {
-    
+    if ( EDITING_LEVEL ) {
+        return;
+    }
     // 刷新Hero
     [_hero fpsUpdate:interval];
     _hero.position = ccp(_hero.x, _hero.y);
@@ -223,8 +240,6 @@
     
     return item;
 }
-
-
 
 - (void)turnHero:(ECHero *)hero x:(float)dirx y:(float)diry  {
     BaseTile * nextY = [self getMyCorners:hero x:0 y:-1];
@@ -697,31 +712,11 @@
 - (void)getItemTrap {
     [self.parent pauseSchedulerAndActions];
     [_hero trap];
-    
-    // Waiting animating
-    double delayInSeconds = HERO_ANIM_DUR;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        CC_TRANSLATE_SCENE([ECGameScene scene]);
-    });
-
 }
 
 - (void)getItemFlower {
     [self.parent pauseSchedulerAndActions];
     [_hero fly];
-    /*
-    ECLevel *level = [[ECLevelManager manager] getCurrentLevelData];
-    level.cleared = YES;
-    level.score = _score;
-    [[ECLevelManager manager] save];
-    */
-    // Waiting animating
-    double delayInSeconds = HERO_ANIM_DUR;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        CC_TRANSLATE_SCENE([ECGameScene scene]);
-    });
 }
 
 

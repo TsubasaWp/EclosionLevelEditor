@@ -35,6 +35,7 @@ static const float _fileDelay[ECHeroActionCount] = {0.3,0.3,0.3,0.3,0.3};
         self.y = self.position.y;
         self.tileW = ECTileSize;
         self.tileH = ECTileSize;
+        [self setTextureFile:@"BombA0.png" highlight:@"BombA0.png"];
         [self run];
     }
     return self;

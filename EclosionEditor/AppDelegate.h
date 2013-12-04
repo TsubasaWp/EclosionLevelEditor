@@ -7,11 +7,12 @@
 //
 
 #import "cocos2d.h"
-
+@class ECGameScene;
 @interface EclosionEditorAppDelegate : NSObject <NSApplicationDelegate>
 {
 	NSWindow	*window_;
 	CCGLView	*glView_;
+    ECGameScene *gameScene_;
 }
 
 @property (assign) IBOutlet NSWindow	*window;
@@ -21,10 +22,10 @@
 
 - (IBAction)toggleFullScreen:(id)sender;
 - (IBAction)addItem:(id)sender;
-- (IBAction)deleteItem;
-- (IBAction)newFile;
-- (IBAction)saveFile;
-- (IBAction)cleanFile;
-- (IBAction)editLevel;
-- (IBAction)runLevel;
+- (IBAction)deleteItem:(id)sender;
+- (IBAction)newFile:(id)sender;
+- (IBAction)saveFile:(id)sender;
+- (IBAction)cleanFile:(id)sender;
+- (IBAction)editLevel:(id)sender;
+- (IBAction)runLevel:(id)sender;
 @end

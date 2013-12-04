@@ -18,6 +18,6 @@
 @property (retain, nonatomic) ECTileMap *map;
 
 +(CCScene *) scene;
-- (void)fpsUpdate:(ccTime)interval;
-- (void)fixUpdate:(ccTime)interval;
+-(void) run;
+-(void) edit;
 @end
