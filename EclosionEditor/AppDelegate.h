@@ -8,7 +8,7 @@
 
 #import "cocos2d.h"
 @class ECGameScene;
-@interface EclosionEditorAppDelegate : NSObject <NSApplicationDelegate>
+@interface EclosionEditorAppDelegate : NSObject <NSApplicationDelegate, NSTextFieldDelegate>
 {
 	NSWindow	*window_;
 	CCGLView	*glView_;

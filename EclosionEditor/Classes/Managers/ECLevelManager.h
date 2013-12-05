@@ -17,12 +17,10 @@
 @interface ECLevelManager : NSObject {
 }
 
-@property (nonatomic, assign) int currentLevel;                 // ( 0 - MAX_LEVEL - 1 )
-@property (nonatomic, assign) int currentStage;                 // ( 0 - MAX_STAGE - 1 )
-@property (nonatomic, retain) NSMutableArray *levelDataArray;    // store ECLevel
+@property (nonatomic, assign) int currentLevel;                 
 @property (nonatomic, assign) bool editing;                     // 是否正在编辑
+@property (nonatomic, assign) int  totalLevel;                  // 是否正在编辑
 
 + (ECLevelManager *)manager;
-- (ECLevel *)getCurrentLevelData;
-- (void)save;
+
 @end

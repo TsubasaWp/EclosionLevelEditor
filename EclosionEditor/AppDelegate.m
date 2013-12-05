@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ECGameScene.h"
+#import "ECLevelManager.h"
 
 @implementation EclosionEditorAppDelegate
 @synthesize window=window_, glView=glView_;
@@ -33,11 +34,18 @@
 	// Center main window
 	[window_ center];
 	
+    // Init Files
+    [self initLevelFiles];
+    
+    // Init UI
+    [self initUI];
+    
     // ECGameScene
     gameScene_ = [[ECGameScene node] retain];
     CCScene *scene = [CCScene node];
 	[scene addChild: gameScene_];
 	[director runWithScene:scene];
+
 }
 
 - (BOOL) applicationShouldTerminateAfterLastWindowClosed: (NSApplication *) theApplication
@@ -50,6 +58,35 @@
 	[[CCDirector sharedDirector] end];
 	[window_ release];
 	[super dealloc];
+}
+
+#pragma UI
+- (void)initUI {
+    _totalLevelLabel.stringValue = [NSString stringWithFormat:@" / %d", [ECLevelManager manager].totalLevel];
+}
+
+#pragma mark File
+- (void)initLevelFiles {
+
+    NSError * error= nil;
+    NSFileManager * fm = [NSFileManager defaultManager];
+    NSArray * array = [fm contentsOfDirectoryAtPath:ECLevelFilePath error:&error];
+    // 如果存储目录~/Documents/EclosionLevels/是空的, 则创建目录将包中自带的关卡拷过去
+    if( error) {
+        BOOL ret = [fm createDirectoryAtPath:ECLevelFilePath withIntermediateDirectories:YES attributes:nil error:&error];
+        if ( ret ) {
+            for ( int i = 0; i < MAX_LEVEL; i++ ) {
+                NSString *filename = [NSString stringWithFormat:@"level%d",i];
+                [fm copyItemAtPath:[[NSBundle mainBundle] pathForResource:filename ofType:@"plist"]
+                            toPath:[NSString stringWithFormat:@"%@%@.plist",ECLevelFilePath,filename] error:&error];
+            }
+        }
+        array = [fm contentsOfDirectoryAtPath:ECLevelFilePath error:&error];
+    }
+    else
+    {
+        NSLog(@"array=%@",array);
+    }
 }
 
 #pragma mark AppDelegate - IBActions
@@ -86,6 +123,26 @@
 
 - (IBAction)runLevel:(id)sender {
     [gameScene_ run];
+    
+}
+
+#pragma NSTextField Delegate
+- (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor {
+    
+    // Valate
+    if ( control != _currentLevelLabel ) return NO;
+    int level = [fieldEditor.string intValue];
+    if (( level < 0 ) || ( level >= [ECLevelManager manager].totalLevel)) return NO;
+    
+    // Show Level number
+    NSString *value = [NSString stringWithFormat:@"%d", level];
+    control.stringValue = value;
+    
+    // Load level
+    [ECLevelManager manager].currentLevel = level;
+    [self editLevel:nil];
+    
+    return YES;
 }
 
 @end

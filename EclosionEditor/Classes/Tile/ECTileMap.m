@@ -704,13 +704,17 @@
 }
 
 - (void)getItemTrap {
-    [self.parent pauseSchedulerAndActions];
     [_hero trap];
+    if ( self.delegate ) {
+        [self.delegate performSelector:@selector(tileMapDidEndGame) withObject:nil afterDelay:1];
+    }
 }
 
 - (void)getItemFlower {
-    [self.parent pauseSchedulerAndActions];
     [_hero fly];
+    if ( self.delegate ) {
+        [self.delegate performSelector:@selector(tileMapDidEndGame) withObject:nil afterDelay:1];
+    }
 }
 
 

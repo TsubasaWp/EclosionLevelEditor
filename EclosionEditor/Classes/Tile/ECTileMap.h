@@ -13,6 +13,12 @@
 #define MAP_COL 7
 #define TILE_SIZE 40
 
+@protocol ECTileMapDelegate <NSObject>
+
+-(void)tileMapDidEndGame;
+
+@end
+
 @class ECHero;
 
 
@@ -25,6 +31,8 @@
     CCSprite*       _pixelItemMap[MAP_COL * TILE_SIZE][MAP_ROW* TILE_SIZE];
     int             _score;
 }
+
+@property(assign, nonatomic) id delegate;
 
 + (ECTileMap *)mapBuildWithFile:(NSString *)filename;
 - (void)buildMap:(NSString *)filename;

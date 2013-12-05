@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+// FilePath
+#define ECLevelFilePath [NSString stringWithFormat:@"%@/Documents/EclosionLevels/",NSHomeDirectory()]
+
 // Tile size
 #define ECTileSize 40
 #define ECFixFPS   40.f

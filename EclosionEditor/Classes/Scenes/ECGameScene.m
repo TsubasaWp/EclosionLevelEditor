@@ -44,6 +44,7 @@
     }
     _map = [ECTileMap mapBuildWithFile:
                         [NSString stringWithFormat:@"level%d",[ECLevelManager manager].currentLevel]];
+    _map.delegate = self;
     _map.position = ccp(22,5);
     [self addChild:_map];
 }
@@ -66,5 +67,10 @@
     
 }
 
+#pragma Map delegate
+
+-(void)tileMapDidEndGame {
+    [self edit];
+}
 
 @end
