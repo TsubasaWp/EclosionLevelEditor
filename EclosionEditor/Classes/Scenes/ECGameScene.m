@@ -63,8 +63,57 @@
 
 #pragma Editor Menu
 
--(void)editorAddObject {
+-(void)editorAddObject:(int)objectId {
+    NSDictionary *mapping = [NSDictionary dictionaryWithObjectsAndKeys:
+                         @"Hero",@"0",
+                         @"Wall",@"1",
+                         @"Star",@"2",
+                         @"Tree",@"3",
+                         @"Trap",@"4",
+                         @"End",@"5",
+                         @"MovH1",@"6",
+                         @"MovH2",@"7",
+                         @"MovH3",@"8",
+                         @"MovL2",@"9",
+                         @"MovL3",@"10",
+                         nil];
+    // Hero
+    if ( objectId == 0 ) {
+        NSDictionary *objDic = [NSDictionary dictionaryWithObjectsAndKeys:
+                                [NSDictionary dictionaryWithObjectsAndKeys:
+                                 [NSNumber numberWithInt:0],@"x",
+                                 [NSNumber numberWithInt:0],@"y",nil] ,@"position", nil];
+        
+        NSMutableDictionary *levelDic =
+        [NSMutableDictionary dictionaryWithDictionary:[ECLevelManager manager].levelContent];
+        [levelDic setObject:objDic forKey:@"hero"];
+        [ECLevelManager manager].levelContent = levelDic;
+    }
+    // Object
+    else {
+        NSString *filename = [mapping objectForKey:[NSString stringWithFormat:@"%d",objectId]];
+        if ( [filename length] > 0 ) {
+            NSDictionary *objDic = [NSDictionary dictionaryWithObjectsAndKeys:
+                                     filename,@"type",
+                                     [NSDictionary dictionaryWithObjectsAndKeys:
+                                      [NSNumber numberWithInt:0],@"x",
+                                      [NSNumber numberWithInt:0],@"y",nil] ,@"position", nil];
+
+            NSMutableArray *array = [[ECLevelManager manager].levelContent objectForKey:@"map"];
+            [array addObject:objDic];
+            NSMutableDictionary *levelDic =
+            [NSMutableDictionary dictionaryWithDictionary:[ECLevelManager manager].levelContent];
+            [levelDic setObject:array forKey:@"map"];
+            [ECLevelManager manager].levelContent = levelDic;
+        }
+    }
     
+    [[ECLevelManager manager] saveLevelFile];
+    [self edit];
+}
+
+-(void)editorDeleteSelectObject {
+
 }
 
 #pragma Map delegate

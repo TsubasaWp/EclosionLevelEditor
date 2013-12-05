@@ -36,6 +36,7 @@
 	
     // Init Files
     [self initLevelFiles];
+    [ECLevelManager manager].currentLevel = 0;
     
     // Init UI
     [self initUI];
@@ -97,12 +98,12 @@
 	[director setFullScreen: ! [director isFullScreen] ];
 }
 
-- (IBAction)addItem:(id)sender {
-
+- (IBAction)addItem:(NSButton *)sender {
+    [gameScene_ editorAddObject:(int)sender.tag];
 }
 
 - (IBAction)deleteItem:(id)sender {
-
+    [gameScene_ editorDeleteSelectObject];
 }
 
 - (IBAction)newFile:(id)sender {

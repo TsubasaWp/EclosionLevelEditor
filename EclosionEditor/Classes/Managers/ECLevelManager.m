@@ -19,9 +19,26 @@ static ECLevelManager * _sharedManager;
     return _sharedManager;
 }
 
-- (void)setCurrentLevel:(int)currentLevel {
-    NSAssert(currentLevel < self.totalLevel, @"Error! Level index beyond the bounds!");
-    _currentLevel = currentLevel;
+- (void)setCurrentLevel:(int)aCurrentLevel {
+    NSAssert(aCurrentLevel < self.totalLevel, @"Error! Level index beyond the bounds!");
+    
+    // 保存并更新关卡数据
+    NSString *filename = [NSString stringWithFormat:@"level%d",_currentLevel];
+    NSString *path = [[NSBundle mainBundle] pathForResource:filename ofType:@"plist"];
+    [self.levelContent writeToFile:path atomically:YES];
+    
+    filename = [NSString stringWithFormat:@"level%d",aCurrentLevel];
+    path = [[NSBundle mainBundle] pathForResource:filename ofType:@"plist"];
+    self.levelContent = [NSDictionary dictionaryWithContentsOfFile:path];
+    
+    // 更新关卡数
+    _currentLevel = aCurrentLevel;
+}
+
+- (void)saveLevelFile {
+    NSString *filename = [NSString stringWithFormat:@"level%d",_currentLevel];
+    NSString *path = [[NSBundle mainBundle] pathForResource:filename ofType:@"plist"];
+    [self.levelContent writeToFile:path atomically:YES];
 }
 
 - (id)init {

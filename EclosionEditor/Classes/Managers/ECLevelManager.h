@@ -20,7 +20,8 @@
 @property (nonatomic, assign) int currentLevel;                 
 @property (nonatomic, assign) bool editing;                     // 是否正在编辑
 @property (nonatomic, assign) int  totalLevel;                  // 是否正在编辑
+@property (nonatomic, retain) NSDictionary *levelContent;       // 关卡文件内容
 
 + (ECLevelManager *)manager;
-
+- (void)saveLevelFile;
 @end

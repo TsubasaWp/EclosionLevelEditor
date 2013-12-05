@@ -20,4 +20,6 @@
 +(CCScene *) scene;
 -(void) run;
 -(void) edit;
+-(void) editorAddObject:(int)objectId;
+-(void) editorDeleteSelectObject;
 @end
