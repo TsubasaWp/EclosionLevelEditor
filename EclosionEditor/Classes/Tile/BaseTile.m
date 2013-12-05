@@ -23,6 +23,8 @@
         self.direction = ECDirectionNone;
         self.speed = ITEM_SPEED;
         self.preDirection = ECDirectionLeft;
+        
+        [[[CCDirector sharedDirector] eventDispatcher] addMouseDelegate:self priority:0];
     }
     return self;
 }
@@ -94,9 +96,6 @@ bool CCRectContainsPoint(CGRect rect, CGPoint point) {
 
 - (void)setMovebal:(BOOL)amovebal {
     _movebal = amovebal;
-    if ( _movebal ) {
-        [[[CCDirector sharedDirector] eventDispatcher] addMouseDelegate:self priority:0];
-    }
 }
 
 
@@ -104,30 +103,47 @@ bool CCRectContainsPoint(CGRect rect, CGPoint point) {
 
 - (BOOL)ccMouseDown:(NSEvent *)event
 {
+    if (( !_movebal ) && ( !EDITING_LEVEL )) return NO;
+
     if ( EDITING_LEVEL ) {
+        if ([self containsTouchLocation:event]) {
+            [self setMyTexture:_highlightTexture];
+            _beginPoint = [(CCDirectorMac*)[CCDirector sharedDirector] convertEventToGL:event];
+            self.focus = YES;
+        } else {
+            self.focus = NO;
+            [self setMyTexture:_texture];
+        }
         return NO;
     }
     
 	if ([self containsTouchLocation:event]) {
-        _beginPoint = [(CCDirectorMac*)[CCDirector sharedDirector] convertEventToGL:event];
         [self setMyTexture:_highlightTexture];
+        _beginPoint = [(CCDirectorMac*)[CCDirector sharedDirector] convertEventToGL:event];
         return YES;
-    }
+    } 
+    
     return NO;
 }
 -(BOOL) ccMouseDragged:(NSEvent *)event
 {
-    if ( EDITING_LEVEL ) {
-        return NO;
+    if (( !_movebal ) && ( !EDITING_LEVEL )) return NO;
+    
+    CGPoint endPoint = [(CCDirectorMac*)[CCDirector sharedDirector] convertEventToGL:event];
+    float x = endPoint.x - _beginPoint.x;
+    float y = endPoint.y - _beginPoint.y;
+    _beginPoint = endPoint;
+    
+    if ( EDITING_LEVEL && self.focus ) {
+        self.x += x;
+        self.y += y;
+        self.position = ccp(_x,_y);
+        return YES;
     }
     
     if ([self containsTouchLocation:event]) {
         if (_forceDirection != ECDirectionNone) return YES;
         
-        CGPoint endPoint = [(CCDirectorMac*)[CCDirector sharedDirector] convertEventToGL:event];
-        
-        float x = endPoint.x - _beginPoint.x;
-        float y = endPoint.y - _beginPoint.y;
         if ( x*x > y*y ) {
             if ( x > 0 ) {
                 self.forceDirection = ECDirectionRight;
@@ -148,12 +164,25 @@ bool CCRectContainsPoint(CGRect rect, CGPoint point) {
 
 - (BOOL)ccMouseUp:(NSEvent *)event
 {
+    if (( !_movebal ) && ( !EDITING_LEVEL )) return NO;
+    
     if ( EDITING_LEVEL ) {
+        if ([self containsTouchLocation:event] && self.focus ) {
+            float middleW = (self.tileW % ( 2 * ECTileSize )) / 2 ;
+            float middleH = (self.tileH % ( 2 * ECTileSize )) / 2 ;
+            self.x = ((int)(self.x/ECTileSize)) * ECTileSize + middleW;
+            self.y = ((int)(self.y/ECTileSize)) * ECTileSize + middleH;
+            self.position = ccp(_x,_y);
+        } else {
+            self.focus = NO;
+            [self setMyTexture:_texture];
+        }
         return NO;
     }
     
     [self setMyTexture:_texture];
     if ([self containsTouchLocation:event]) return YES;
+    
     return NO;
 }
 

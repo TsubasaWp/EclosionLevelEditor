@@ -29,9 +29,9 @@ typedef enum {
 } ECDirection;
 
 @interface BaseTile : CCSprite<CCMouseEventDelegate> {
-    CGPoint       _beginPoint;
-    CCTexture2D* _texture;
-    CCTexture2D* _highlightTexture;
+    CGPoint         _beginPoint;
+    CCTexture2D*    _texture;
+    CCTexture2D*    _highlightTexture;
 }
 
 @property(nonatomic, assign) int            tileW;
@@ -54,6 +54,7 @@ typedef enum {
 @property(nonatomic, assign) BOOL           animating;
 @property(nonatomic, assign) BOOL           movebal;
 @property(nonatomic, assign) BOOL           walkball;
+@property(nonatomic, assign) BOOL           focus; // 编辑状态下焦点
 @property(nonatomic, assign) int            alowingDirection;
 
 - (void)fpsUpdate:(ccTime)interval;
