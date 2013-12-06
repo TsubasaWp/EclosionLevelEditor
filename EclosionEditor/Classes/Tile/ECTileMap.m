@@ -47,7 +47,7 @@
 - (void)buildMap:(NSString *)filename {
     
     // read file
-    NSString *path = [[NSBundle mainBundle] pathForResource:filename ofType:@"plist"];
+    NSString *path = [NSString stringWithFormat:@"%@%@.plist",ECLevelFilePath,filename];
     NSDictionary *dic = [NSDictionary dictionaryWithContentsOfFile:path];
     _tileMatrix = [[dic objectForKey:@"map"] copy];
     
@@ -149,6 +149,7 @@
     }
     [levelDic setObject:array forKey:@"map"];
     [ECLevelManager manager].levelContent = levelDic;
+    [[ECLevelManager manager] saveLevelFile];
 }
 
 #pragma mark - Game

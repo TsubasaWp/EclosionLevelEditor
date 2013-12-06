@@ -15,6 +15,7 @@
 			<string>NSButton</string>
 			<string>NSButtonCell</string>
 			<string>NSCustomObject</string>
+			<string>NSCustomView</string>
 			<string>NSMenu</string>
 			<string>NSMenuItem</string>
 			<string>NSOpenGLView</string>
@@ -314,7 +315,6 @@
 							<string key="NSFrame">{{320, 80}, {320, 480}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
 							<int key="NSViewLayerContentsRedrawPolicy">2</int>
 							<object class="NSOpenGLPixelFormat" key="NSPixelFormat">
 								<object class="NSMutableData" key="NSPixelAttributes">
@@ -865,6 +865,24 @@
 								<int key="NSPeriodicInterval">75</int>
 							</object>
 						</object>
+						<object class="NSCustomView" id="218924597">
+							<reference key="NSNextResponder" ref="439893737"/>
+							<int key="NSvFlags">268</int>
+							<string key="NSFrameSize">{312, 640}</string>
+							<reference key="NSSuperview" ref="439893737"/>
+							<reference key="NSWindow"/>
+							<string key="NSReuseIdentifierKey">_NS:9</string>
+							<string key="NSClassName">NSView</string>
+						</object>
+						<object class="NSCustomView" id="477997278">
+							<reference key="NSNextResponder" ref="439893737"/>
+							<int key="NSvFlags">268</int>
+							<string key="NSFrame">{{648, 0}, {312, 640}}</string>
+							<reference key="NSSuperview" ref="439893737"/>
+							<reference key="NSWindow"/>
+							<string key="NSReuseIdentifierKey">_NS:9</string>
+							<string key="NSClassName">NSView</string>
+						</object>
 					</object>
 					<string key="NSFrameSize">{960, 640}</string>
 					<reference key="NSSuperview"/>
@@ -1143,6 +1161,22 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
+						<string key="label">maskViewLeft</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="218924597"/>
+					</object>
+					<int key="connectionID">655</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">maskViewRight</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="477997278"/>
+					</object>
+					<int key="connectionID">656</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
 						<string key="label">delegate</string>
 						<reference key="source" ref="351956819"/>
 						<reference key="destination" ref="976324537"/>
@@ -1376,6 +1410,8 @@
 							<reference ref="1007167453"/>
 							<reference ref="1013823598"/>
 							<reference ref="904024026"/>
+							<reference ref="218924597"/>
+							<reference ref="477997278"/>
 						</object>
 						<reference key="parent" ref="972006081"/>
 					</object>
@@ -1693,6 +1729,16 @@
 						<reference key="object" ref="229838447"/>
 						<reference key="parent" ref="391645076"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">653</int>
+						<reference key="object" ref="218924597"/>
+						<reference key="parent" ref="439893737"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">654</int>
+						<reference key="object" ref="477997278"/>
+						<reference key="parent" ref="439893737"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -1775,6 +1821,8 @@
 					<string>621.IBPluginDependency</string>
 					<string>622.IBPluginDependency</string>
 					<string>623.IBPluginDependency</string>
+					<string>653.IBPluginDependency</string>
+					<string>654.IBPluginDependency</string>
 					<string>92.IBPluginDependency</string>
 				</object>
 				<object class="NSArray" key="dict.values">
@@ -1856,6 +1904,8 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="unlocalizedProperties">
@@ -1870,7 +1920,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">652</int>
+			<int key="maxID">656</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1966,6 +2016,8 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>currentLevelLabel</string>
 							<string>glView</string>
+							<string>maskViewLeft</string>
+							<string>maskViewRight</string>
 							<string>totalLevelLabel</string>
 							<string>window</string>
 						</object>
@@ -1973,6 +2025,8 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>NSTextField</string>
 							<string>CCGLView</string>
+							<string>NSView</string>
+							<string>NSView</string>
 							<string>NSTextField</string>
 							<string>NSWindow</string>
 						</object>
@@ -1983,6 +2037,8 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>currentLevelLabel</string>
 							<string>glView</string>
+							<string>maskViewLeft</string>
+							<string>maskViewRight</string>
 							<string>totalLevelLabel</string>
 							<string>window</string>
 						</object>
@@ -1995,6 +2051,14 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">glView</string>
 								<string key="candidateClassName">CCGLView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">maskViewLeft</string>
+								<string key="candidateClassName">NSView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">maskViewRight</string>
+								<string key="candidateClassName">NSView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">totalLevelLabel</string>

@@ -19,6 +19,9 @@
 @property (assign) IBOutlet CCGLView	*glView;
 @property (retain) IBOutlet NSTextField	*currentLevelLabel;
 @property (retain) IBOutlet NSTextField	*totalLevelLabel;
+@property (retain) IBOutlet NSView      *maskViewLeft;
+@property (retain) IBOutlet NSView      *maskViewRight;
+
 
 - (IBAction)toggleFullScreen:(id)sender;
 - (IBAction)addItem:(id)sender;

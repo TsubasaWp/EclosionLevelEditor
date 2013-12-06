@@ -24,4 +24,5 @@
 
 + (ECLevelManager *)manager;
 - (void)saveLevelFile;
+- (void)newLevel;
 @end

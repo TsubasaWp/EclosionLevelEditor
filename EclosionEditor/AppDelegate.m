@@ -64,6 +64,7 @@
 #pragma UI
 - (void)initUI {
     _totalLevelLabel.stringValue = [NSString stringWithFormat:@" / %d", [ECLevelManager manager].totalLevel];
+    _currentLevelLabel.stringValue = [NSString stringWithFormat:@"%d", [ECLevelManager manager].currentLevel + 1];
 }
 
 #pragma mark File
@@ -99,6 +100,7 @@
 }
 
 - (IBAction)addItem:(NSButton *)sender {
+    [gameScene_ editorSave];
     [gameScene_ editorAddObject:(int)sender.tag];
 }
 
@@ -107,7 +109,9 @@
 }
 
 - (IBAction)newFile:(id)sender {
-    
+    [[ECLevelManager manager] newLevel];
+    [gameScene_ restart];
+    [self initUI];
 }
 
 - (IBAction)saveFile:(id)sender {
@@ -120,10 +124,14 @@
 
 - (IBAction)editLevel:(id)sender {
     [gameScene_ edit];
+    [self.maskViewLeft setHidden:YES];
+    [self.maskViewRight setHidden:YES];
 }
 
 - (IBAction)runLevel:(id)sender {
     [gameScene_ run];
+    [self.maskViewLeft setHidden:NO];
+    [self.maskViewRight setHidden:NO];
     
 }
 
@@ -133,14 +141,14 @@
     // Valate
     if ( control != _currentLevelLabel ) return NO;
     int level = [fieldEditor.string intValue];
-    if (( level < 0 ) || ( level >= [ECLevelManager manager].totalLevel)) return NO;
+    if (( level <= 0 ) || ( level > [ECLevelManager manager].totalLevel)) return NO;
     
     // Show Level number
     NSString *value = [NSString stringWithFormat:@"%d", level];
     control.stringValue = value;
     
     // Load level
-    [ECLevelManager manager].currentLevel = level;
+    [ECLevelManager manager].currentLevel = level - 1;
     [self editLevel:nil];
     
     return YES;
