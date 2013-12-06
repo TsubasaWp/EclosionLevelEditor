@@ -68,32 +68,87 @@
     
     // read hero position
     NSDictionary *heroDic = [dic objectForKey:@"hero"];
-    int tileX = [[[heroDic objectForKey:@"position"] objectForKey:@"x"] intValue];
-    int tileY = [[[heroDic objectForKey:@"position"] objectForKey:@"y"] intValue];
-    _hero = [[ECHero alloc] init];
-    _hero.tileX = tileX;
-    _hero.tileY = tileY;
-    _hero.x = TILE_SIZE * tileX + _hero.tileW/2;
-    _hero.y = TILE_SIZE * tileY + _hero.tileH/2;
-    _hero.position = ccp(_hero.x, _hero.y);
-    _hero.direction = ECDirectionLeft;
-    [self addChild:_hero];
+    if ( heroDic ) {
+        int tileX = [[[heroDic objectForKey:@"position"] objectForKey:@"x"] intValue];
+        int tileY = [[[heroDic objectForKey:@"position"] objectForKey:@"y"] intValue];
+        _hero = [[ECHero alloc] init];
+        _hero.tileX = tileX;
+        _hero.tileY = tileY;
+        _hero.x = TILE_SIZE * tileX + _hero.tileW/2;
+        _hero.y = TILE_SIZE * tileY + _hero.tileH/2;
+        _hero.position = ccp(_hero.x, _hero.y);
+        _hero.direction = ECDirectionLeft;
+        [self addChild:_hero];
+    }
 }
 
 #pragma mark - Level Editor
 - (void)cleanAllObjects {
+    [self removeAllChildrenWithCleanup:YES];
+    [_myItems removeAllObjects];
+    [_hero release];
+    [self saveEditedLevel];
+}
 
+- (void)removeSelectObject {
+    if ( _hero.focus ) {
+        [_hero removeAllChildrenWithCleanup:YES];
+        _hero = nil;
+        return;
+    }
+    for ( int i = 0 ; i < [_myItems count]; i++ ) {
+        BaseTile *item = [_myItems objectAtIndex:i];
+        if ( item.focus ) {
+            [item removeFromParentAndCleanup:YES];
+            [_myItems removeObject:item];
+        }
+    }
+    [self saveEditedLevel];
 }
 
 - (void)saveEditedLevel {
-
-}
-
-- (void)enterEditingMode {
-
-}
-
-- (void)runGame {
+    NSDictionary *mapping = [NSDictionary dictionaryWithObjectsAndKeys:
+                             @"Wall",@"ECTileWall",
+                             @"Star",@"ECTileStar",
+                             @"Tree",@"ECTileTree",
+                             @"Trap",@"ECTileTrap",
+                             @"End",@"ECTileEnd",
+                             @"MovH1",@"ECTileRoadH1",
+                             @"MovH2",@"ECTileRoadH2",
+                             @"MovH3",@"ECTileRoadH3",
+                             @"MovL2",@"ECTileRoadL2",
+                             @"MovL3",@"ECTileRoadL3",
+                             nil];
+    NSMutableDictionary *levelDic =
+    [NSMutableDictionary dictionaryWithDictionary:[ECLevelManager manager].levelContent];
+    
+    // Hero
+    if ( _hero ) {
+        NSDictionary *objDic = [NSDictionary dictionaryWithObjectsAndKeys:
+                                [NSDictionary dictionaryWithObjectsAndKeys:
+                                [NSNumber numberWithInt:(_hero.x - _hero.tileW/2)/ECTileSize],@"x",
+                                [NSNumber numberWithInt:(_hero.y - _hero.tileH/2)/ECTileSize],@"y",nil] ,@"position", nil];
+        
+        [levelDic setObject:objDic forKey:@"hero"];
+    }
+    
+    // Objects
+    NSMutableArray *array = [NSMutableArray array];
+    for ( int i = 0 ; i < [_myItems count]; i++ ) {
+        BaseTile *item = [_myItems objectAtIndex:i];
+        NSString *filename = [mapping objectForKey:[[item class] description]];
+        if ( [filename length] > 0 ) {
+            NSDictionary *objDic = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    filename,@"type",
+                                    [NSDictionary dictionaryWithObjectsAndKeys:
+                                     [NSNumber numberWithInt:(item.x - item.tileW/2)/ECTileSize],@"x",
+                                     [NSNumber numberWithInt:(item.y - item.tileH/2)/ECTileSize],@"y",nil] ,@"position", nil];
+            
+            [array addObject:objDic];
+        }
+    }
+    [levelDic setObject:array forKey:@"map"];
+    [ECLevelManager manager].levelContent = levelDic;
 }
 
 #pragma mark - Game

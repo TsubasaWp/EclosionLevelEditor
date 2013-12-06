@@ -40,10 +40,8 @@
 - (void)fixUpdate:(ccTime)interval;
 
 // for Editor
-- (void)destory;
+- (void)removeSelectObject;
 - (void)cleanAllObjects;
 - (void)saveEditedLevel;
-- (void)enterEditingMode;
-- (void)runGame;
 @end
 

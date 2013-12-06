@@ -53,12 +53,13 @@
     [ECLevelManager manager].editing = NO;
 }
 
-- (void)stop {
+- (void)restart {
+    [ECLevelManager manager].editing = YES;
+    [self loadGame];
 }
 
 -(void) edit {
-    [ECLevelManager manager].editing = YES;
-    [self loadGame];
+    [self restart];
 }
 
 #pragma Editor Menu
@@ -109,17 +110,27 @@
     }
     
     [[ECLevelManager manager] saveLevelFile];
-    [self edit];
+    [self restart];
 }
 
 -(void)editorDeleteSelectObject {
-
+    [_map removeSelectObject];
 }
+
+-(void)editorClean {
+    [_map cleanAllObjects];
+    [self restart];
+}
+
+-(void)editorSave {
+    [_map saveEditedLevel];
+}
+
 
 #pragma Map delegate
 
 -(void)tileMapDidEndGame {
-    [self edit];
+    [self restart];
 }
 
 @end

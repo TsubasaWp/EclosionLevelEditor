@@ -107,15 +107,15 @@
 }
 
 - (IBAction)newFile:(id)sender {
-
+    
 }
 
 - (IBAction)saveFile:(id)sender {
-
+    [gameScene_ editorSave];
 }
 
 - (IBAction)cleanFile:(id)sender {
-
+    [gameScene_ editorClean];
 }
 
 - (IBAction)editLevel:(id)sender {
